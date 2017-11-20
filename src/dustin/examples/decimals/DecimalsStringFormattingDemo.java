@@ -1,7 +1,6 @@
 package dustin.examples.decimals;
 
 import java.math.BigDecimal;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
 import static java.lang.System.out;
@@ -12,9 +11,6 @@ import static java.lang.System.out;
  */
 public class DecimalsStringFormattingDemo
 {
-   private final static DecimalFormat floatFormat = new DecimalFormat("%f");
-   private final static DecimalFormat doubleFormat = new DecimalFormat("%d");
-
    /**
     * Supports rendering of Java numeric types float, double,
     * and BigDecimal in "default" format and in format that
@@ -22,6 +18,7 @@ public class DecimalsStringFormattingDemo
     */
    public enum Format
    {
+      /** No specific formatting; apply Java default String formatting. */
       DEFAULT
       {
          @Override
@@ -40,6 +37,7 @@ public class DecimalsStringFormattingDemo
             return bigDecimalValue.toString();
          }
       },
+      /** Preclude representation of Java decimal numbers in scientific notation. */
       NO_EXPONENT
       {
          @Override
@@ -59,6 +57,7 @@ public class DecimalsStringFormattingDemo
          }
       };
 
+      /** Used to prevent numbers from being represented in scientific notation. */
       private static final NumberFormat numberFormat = NumberFormat.getInstance();
 
       static
@@ -67,8 +66,23 @@ public class DecimalsStringFormattingDemo
          numberFormat.setGroupingUsed(false);
       }
 
+      /**
+       * Present provided float as a String formatted per my format.
+       *
+       * @param floatValue Float-typed number to be rendered.
+       */
       public abstract String fromFloat(final float floatValue);
+      /**
+       * Present provided double as a String formatted per my format.
+       *
+       * @param doubleValue Double-typed number to be rendered.
+       */
       public abstract String fromDouble(final double doubleValue);
+      /**
+       * Present provided BigDecimal as a String formatted per my format.
+       *
+       * @param bigDecimalValue BigDecimal object to be rendered.
+       */
       public abstract String fromBigDecimal(final BigDecimal bigDecimalValue);
    }
 
@@ -186,6 +200,15 @@ public class DecimalsStringFormattingDemo
       return line.toString();
    }
 
+   /**
+    * Using provided instance of {@link Format}, write out ranges of
+    * floats, doubles, and BigDecimals selected specifically to
+    * demonstrate Java default rendering of these types in
+    * scientific notation and how to render them without scientific
+    * notation.
+    *
+    * @param format Format to be applied to Java decimal numeric types.
+    */
    private static void writeFormattedValues(final Format format)
    {
       writeFloatsToOutput(
@@ -212,6 +235,15 @@ public class DecimalsStringFormattingDemo
          format);
    }
 
+   /**
+    * Main executable that demonstrates writing Java decimal numeric
+    * types with their default rendering that includes scientific
+    * notation in select cases and writing Java decimal numeric types
+    * with customized rendering that precludes use of scientific
+    * notation in the presentation of the same numbers.
+    *
+    * @param arguments Command-line arguments (none expected).
+    */
    public static void main(final String[] arguments)
    {
       writeFormattedValues(Format.DEFAULT);
