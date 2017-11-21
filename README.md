@@ -3,4 +3,4 @@ This repository contains Java-related demonstrations typically discussed in grea
 
 Here are the blog posts associated with these demonstrative examples:
 
-* [Simple String Representation of Java Decimal Numbers without Scientific Notation](Simple String Representation of Java Decimal Numbers without Scientific Notation)
+* [Simple String Representation of Java Decimal Numbers without Scientific Notation](http://marxsoftware.blogspot.com/2017/11/java-decimals-strings.html)
