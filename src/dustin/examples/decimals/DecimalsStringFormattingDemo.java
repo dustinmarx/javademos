@@ -43,12 +43,12 @@ public class DecimalsStringFormattingDemo
          @Override
          public String fromFloat(final float floatValue)
          {
-            return numberFormat.format(floatValue);
+            return getFormatter().format(floatValue);
          }
          @Override
          public String fromDouble(final double doubleValue)
          {
-            return numberFormat.format(doubleValue);
+            return getFormatter().format(doubleValue);
          }
          @Override
          public String fromBigDecimal(final BigDecimal bigDecimalValue)
@@ -56,15 +56,6 @@ public class DecimalsStringFormattingDemo
             return bigDecimalValue.toPlainString();
          }
       };
-
-      /** Used to prevent numbers from being represented in scientific notation. */
-      private static final NumberFormat numberFormat = NumberFormat.getInstance();
-
-      static
-      {
-         numberFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
-         numberFormat.setGroupingUsed(false);
-      }
 
       /**
        * Present provided float as a String formatted per my format.
@@ -84,6 +75,15 @@ public class DecimalsStringFormattingDemo
        * @param bigDecimalValue BigDecimal object to be rendered.
        */
       public abstract String fromBigDecimal(final BigDecimal bigDecimalValue);
+
+      private static NumberFormat getFormatter()
+      {
+         /** Used to prevent numbers from being represented in scientific notation. */
+         final NumberFormat numberFormat = NumberFormat.getInstance();
+         numberFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
+         numberFormat.setGroupingUsed(false);
+         return numberFormat;
+      }
    }
 
    /**
