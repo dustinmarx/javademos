@@ -1,2 +1,2 @@
 # javademos
-This repository contains Java-related demonstrations typically discussed in greater detail on the "Inspired by Actual Events" blog (http://marxsoftware.blogspot.com/). These are miscellaneous demonstrations of using Java in different contexts.
+This repository contains Java-related demonstrations typically discussed in greater detail on the "Inspired by Actual Events" blog (http://marxsoftware.blogspot.com/). These are miscellaneous demonstrations of using Java in different contexts. These demonstrations are not intended to be used as-is with their utlity being demonstration rather than utility. Therefore, these examples are not designed for production use.
