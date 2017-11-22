@@ -76,9 +76,16 @@ public class DecimalsStringFormattingDemo
        */
       public abstract String fromBigDecimal(final BigDecimal bigDecimalValue);
 
+      /** 
+       * Provide an instance of {@code NumberFormat} configured to 
+       * display the maximum fractional digits and to not group. 
+       * 
+       * @return Instance of {@code NumberFormat} to be used to provide 
+       *    a representation of the decimal number without scientific notation. 
+       */ 
       private static NumberFormat getFormatter()
       {
-         /** Used to prevent numbers from being represented in scientific notation. */
+         // Used to prevent numbers from being represented in scientific notation.
          final NumberFormat numberFormat = NumberFormat.getInstance();
          numberFormat.setMaximumFractionDigits(Integer.MAX_VALUE);
          numberFormat.setGroupingUsed(false);
