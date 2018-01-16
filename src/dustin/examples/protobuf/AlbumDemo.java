@@ -4,7 +4,7 @@ import static java.lang.System.out;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Demonstrates using Protocol Buffers with Album.
@@ -48,16 +48,8 @@ public class AlbumDemo
       try
       {
          final AlbumProtos.Album copiedAlbumProtos = AlbumProtos.Album.parseFrom(binaryAlbum);
-         final ArrayList<String> copiedArtists = new ArrayList<>();
-         for (int index=0; index < copiedAlbumProtos.getArtistCount(); index++)
-         {
-            copiedArtists.add(copiedAlbumProtos.getArtist(index));
-         }
-         final ArrayList<String> copiedSongsTitles = new ArrayList<>();
-         for (int index=0; index < copiedAlbumProtos.getSongTitleCount(); index++)
-         {
-            copiedSongsTitles.add(copiedAlbumProtos.getSongTitle(index));
-         }
+         final List<String> copiedArtists = copiedAlbumProtos.getArtistList();
+         final List<String> copiedSongsTitles = copiedAlbumProtos.getSongTitleList();
          album = new Album.Builder(
             copiedAlbumProtos.getTitle(), copiedAlbumProtos.getReleaseYear())
             .artists(copiedArtists)
