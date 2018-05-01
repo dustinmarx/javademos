@@ -3,6 +3,7 @@ This repository contains Java-related demonstrations typically discussed in grea
 
 Here are the blog posts associated with these demonstrative examples:
 
+* [Default HotSpot Maximum Direct Memory Size] (http://marxsoftware.blogspot.com/2016/02/hotspot-maximum-direct-memory-size.html) - 22 February 2016
 * [Simple String Representation of Java Decimal Numbers without Scientific Notation](http://marxsoftware.blogspot.com/2017/11/java-decimals-strings.html) - 20 November 2017
 * [Too Many PreparedStatement Placeholders in Oracle JDBC](http://marxsoftware.blogspot.com/2017/11/too-many-placeholders-ora-01745.html) - 24 November 2017
 * [Using Google's Protocol Buffers with Java](http://marxsoftware.blogspot.com/2018/01/protocol-buffers-java.html) - 16 January 2018
