@@ -2,8 +2,8 @@ package dustin.examples.maxdirectmemory;
 
 import static java.lang.System.out;
 
-import sun.misc.SharedSecrets;
-import sun.misc.VM;
+import jdk.internal.misc.SharedSecrets;
+import jdk.internal.misc.VM;
 
 public class Main
 {
@@ -18,11 +18,11 @@ public class Main
          MemoryUnit.BYTES.toMegaBytes(
             SharedSecrets.getJavaNioAccess().getDirectBufferPool().getMemoryUsed());
       out.println(
-         "sun.misc.SharedSecrets.getJavaNioAccess().getDirectBufferPool().getMemoryUsed(): "
+         "jdk.internal.misc.SharedSecrets.getJavaNioAccess().getDirectBufferPool().getMemoryUsed(): "
             + sharedSecretsMemoryUsed + " MB");
       final double sharedSecretsTotalCapacity =
          MemoryUnit.BYTES.toMegaBytes(SharedSecrets.getJavaNioAccess().getDirectBufferPool().getTotalCapacity());
-      out.println("sun.misc.SharedSecrets.getJavaNioAccess().getDirectBufferPool().getTotalCapacity(): "
+      out.println("jdk.internal.misc.SharedSecrets.getJavaNioAccess().getDirectBufferPool().getTotalCapacity(): "
          + sharedSecretsTotalCapacity + " MB");
    }
 
@@ -36,7 +36,7 @@ public class Main
       final double vmSize =
          MemoryUnit.BYTES.toMegaBytes(VM.maxDirectMemory());
       out.println(
-         "sun.misc.VM.maxDirectMemory(): " + vmSize + " MB");
+         "jdk.internal.misc.VM.maxDirectMemory(): " + vmSize + " MB");
    }
 
    public static void main(final String[] arguments)
