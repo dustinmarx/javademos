@@ -8,5 +8,6 @@ Here are the blog posts associated with these demonstrative examples:
 * [Simple String Representation of Java Decimal Numbers without Scientific Notation](http://marxsoftware.blogspot.com/2017/11/java-decimals-strings.html) - 20 November 2017
 * [Default HotSpot Maximum Direct Memory Size](http://marxsoftware.blogspot.com/2016/02/hotspot-maximum-direct-memory-size.html) - 22 February 2016
   * This example uses internal APIs (`jdk.internal.misc.VM` and `jdk.internal.SharedSecrets`) - use at own risk!
+  * `--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED`
 
 
