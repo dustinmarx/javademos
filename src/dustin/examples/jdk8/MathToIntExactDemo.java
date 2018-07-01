@@ -20,9 +20,6 @@ public class MathToIntExactDemo
     *
     * @param longRepresentation {@code Long} for which {@code int}
     *    value extracted with {@code intValue()} will be returned.
-    * @return {@code int} value corresponding to the provided
-    *    {@code Long} as provided by invoking the method
-    *    {@code intValue()} on that provided {@code Long}.
     * @throws NullPointerException Thrown if the provided long
     *    representation is {@code null}.
     */
@@ -47,9 +44,6 @@ public class MathToIntExactDemo
     * @param longRepresentation {@code Long} for which {@code int}
     *    value extracted with {@code Math.toIntExact(Long)} will be
     *    returned.
-    * @return {@code int} value corresponding to the provided
-    *    {@code Long} as provided by invoking the method
-    *    {@code Math.toIntExact)Long} on that provided {@code Long}.
     * @throws NullPointerException Thrown if the provided long
     *    representation is {@code null}.
     * @throws ArithmeticException Thrown if the provided {@code Long}
