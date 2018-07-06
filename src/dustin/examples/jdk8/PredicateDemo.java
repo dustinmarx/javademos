@@ -2,6 +2,7 @@ package dustin.examples.jdk8;
 
 import static java.lang.System.out;
 
+import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,17 @@ public class PredicateDemo
       getOptionalFloat(-2.5f).filter(f -> f > 0.0).ifPresent(out::print);
       out.print("\nnull: ");
       getOptionalFloat(null).filter(f -> f > 0.0).ifPresent(out::print);
+   }
+
+   /**
+    * Demonstrates use of {@code Stream.filter(Predicate}}.
+    */
+   public static void demonstrateStreamFilter()
+   {
+      final int maximum = 100;
+      out.println("\nThe probable prime numbers between 1 and " + maximum + " are: ");
+      final Stream<BigInteger> bigIntegers = getConsecutiveBigIntegers(maximum);
+      bigIntegers.filter(bi -> bi.isProbablePrime(100)).forEach(pp -> out.println(pp + ","));
    }
 
    /**
@@ -110,6 +122,9 @@ public class PredicateDemo
       out.println("Are no names " + names + " four digits? " + noNamesFourDigits);
    }
 
+   /**
+    * Demonstrate use of {@code Collectors.partitioningBy(Predicate)}.
+    */
    public static void demonstrateCollectorsPartitioningBy()
    {
       final Map<Boolean, List<Integer>> evensAndOdds
@@ -119,9 +134,35 @@ public class PredicateDemo
       out.println("Odds:  " + evensAndOdds.get(Boolean.FALSE));
    }
 
-   public static Stream<Integer> getConsecutiveIntegers(final int maximumNumber)
+   /**
+    * Provides {@code Stream} of consecutive integers beginning with 1
+    * and ending with the provided integer.
+    *
+    * @param maximumInteger Maximum integer for range to be returned. If this
+    *    value is less than 2, 2 will be used.
+    * @return Consecutive integers beginning with 1 and ending with the
+    *    provided maximum (or 2 if 2 is greater than the provided maximum).
+    */
+   public static Stream<Integer> getConsecutiveIntegers(final int maximumInteger)
    {
-      return IntStream.rangeClosed(1, maximumNumber).boxed();
+      return IntStream.rangeClosed(1, Math.max(2, maximumInteger)).boxed();
+   }
+
+   /**
+    * Provides {@code Stream} of consecutive {@code BigInteger}s beginning with
+    * {@code BigInteger.ONE} and ending with the {@code BigInteger} equivalent
+    * of the provided integer.
+    *
+    * @param maximumInteger Maximum integer for range to be returned. If this
+    *    value is less than 2, 2 will be used.
+    * @return Consecutive instances of {@code BigInteger} beginning with
+    *    {@code BigInteger.ONE} and ending with the {@code BigInteger}
+    *    equivalent of the provided maximum (or of 2 if 2 is greater than
+    *    the provided maximum).
+    */
+   public static Stream<BigInteger> getConsecutiveBigIntegers(final int maximumInteger)
+   {
+      return IntStream.rangeClosed(1, Math.max(2, maximumInteger)).mapToObj(BigInteger::valueOf);
    }
 
    /**
@@ -177,10 +218,16 @@ public class PredicateDemo
       return Optional.of(floating);
    }
 
+   /**
+    * Main executable function that executes all demonstration functions.
+    *
+    * @param arguments Command-line arguments: none expected.
+    */
    public static void main(final String[] arguments)
    {
       demonstrateOptionalFilterOnBoolean();
       demonstrateOptionalFilterOnFloat();
+      demonstrateStreamFilter();
       demonstratePatternAsPredicateInFilter();
       demonstrateCollectionRemoveIf();
       demonstrateStreamAllMatch();
