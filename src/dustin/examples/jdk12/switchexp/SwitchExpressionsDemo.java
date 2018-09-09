@@ -81,6 +81,9 @@ public class SwitchExpressionsDemo
       out.println("\tNumeric String is: " + numericString);
    }
 
+   /**
+    * Demonstrate switch expression using colons and breaks.
+    */
    public static void demonstrateSwitchExpressionWithBreaks()
    {
       final int integer = 1;
@@ -100,6 +103,9 @@ public class SwitchExpressionsDemo
       out.println("\t" + numericString);
    }
 
+   /**
+    * Demonstrate switch expressions using "arrow" syntax.
+    */
    public static void demonstrateSwitchExpressionWithArrows()
    {
       final int integer = 4;
