@@ -1,5 +1,7 @@
 package dustin.examples.jdk12.switchexp;
 
+import static java.lang.System.out;
+
 /**
  * Demonstrate JDK 12 "preview language feature"
  * switch expressions (JEP 325).
@@ -16,9 +18,9 @@ public class SwitchExpressionsDemo
    {
       switch (k)
       {
-         case 1 -> System.out.println("one");
-         case 2 -> System.out.println("two");
-         case 3 -> System.out.println("many");
+         case 1 -> out.println("\tone");
+         case 2 -> out.println("\ttwo");
+         case 3 -> out.println("\tmany");
       }
    }
 
@@ -28,18 +30,103 @@ public class SwitchExpressionsDemo
     */
    public static void demonstrateHowMany()
    {
+      out.println("JEP 325 Example:");
       howMany(1);
       howMany(2);
       howMany(3);
    }
 
    /**
+    * Demonstrate traditional switch statement assigned to
+    * local variable.
+    */
+   public static void demonstrateTraditionalSwitchStatement()
+   {
+      out.println("Traditional Switch Statement:");
+      final int integer = 3;
+      String numericString;
+      switch (integer)
+      {
+         case 1 :
+            numericString = "one";
+            break;
+         case 2 :
+            numericString = "two";
+            break;
+         case 3:
+            numericString = "three";
+            break;
+         default:
+            numericString = "N/A";
+      }
+      out.println("\tNumeric String is: " + numericString);
+   }
+
+   /**
+    * Demonstrate enhanced switch statement assigned to
+    * local variable.
+    */
+   public static void demonstrateEnhancedSwitchStatement()
+   {
+      out.println("Enhanced Switch Statement:");
+      final int integer = 2;
+      String numericString;
+      switch (integer)
+      {
+         case 1 -> numericString = "one";
+         case 2 -> numericString = "two";
+         case 3 -> numericString = "three";
+         default -> numericString = "N/A";
+      }
+      out.println("\tNumeric String is: " + numericString);
+   }
+
+   public static void demonstrateSwitchExpressionWithBreaks()
+   {
+      final int integer = 1;
+      out.println("Switch Expression with Colons/Breaks:");
+      final String numericString =
+         switch (integer)
+         {
+            case 1 :
+               break "uno";
+            case 2 :
+               break "dos";
+            case 3 :
+               break "tres";
+            default :
+               break "N/A";
+         };
+      out.println("\t" + numericString);
+   }
+
+   public static void demonstrateSwitchExpressionWithArrows()
+   {
+      final int integer = 4;
+      out.println("Switch Expression with Arrows:");
+      final String numericString =
+      switch (integer)
+      {
+         case 1 -> "uno";
+         case 2 -> "dos";
+         case 3 -> "tres";
+         case 4 -> "quatro";
+         default -> "N/A";
+      };
+      out.println("\t" + numericString);
+   }
+
+   /**
     * Main executable function to run demonstrations.
-    * 
+    *
     * @param arguments Command-line arguments: none expected.
     */
    public static void main(final String[] arguments)
    {
       demonstrateHowMany();
+      demonstrateTraditionalSwitchStatement();
+      demonstrateEnhancedSwitchStatement();
+      demonstrateSwitchExpressionWithBreaks();
+      demonstrateSwitchExpressionWithArrows();
    }
 }
