@@ -10,7 +10,7 @@ public class HashesComparedDemo
    public static void main(final String[] arguments)
    {
       final int[] integers = ArraysCreator.createArrayOfInts();
-      out.println("Arrays.hashCode(Object[]) for int[]: " + Arrays.hashCode(integers));
+      out.println("Arrays.hashCode(int[]) for int[]: " + Arrays.hashCode(integers));
       out.println("Objects.hash(Object...) for int[]:   " + Objects.hash(integers));
       out.println("Objects.hashCode(Object) for int[]:  " + Objects.hashCode(integers));
 
