@@ -8,6 +8,10 @@ import static java.lang.System.out;
  * Examples of raw string literals (very slightly) adapted from
  * JEP 326 (https://openjdk.java.net/jeps/326) and
  * JDK-8196004 (https://bugs.openjdk.java.net/browse/JDK-8196004).
+ *
+ * Raw String Literals are a "Preview Feature" in JDK 12, so this
+ * class must be compiled with {@code javac --enable-preview --release 12}
+ * and must be executed with {@code java --enable-preview}.
  */
 public class StringDemo
 {
