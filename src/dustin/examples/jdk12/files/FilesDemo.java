@@ -13,6 +13,13 @@ import static java.lang.System.out;
  */
 public class FilesDemo
 {
+   /**
+    * Demonstrates use of {@code Files.isSameFile} to determine
+    * whether two files are the same.
+    * 
+    * @param file1Path Path of first file.
+    * @param file2Path Path of second file.
+    */
    private static void demonstrateIsSameFile(
       final Path file1Path, final Path file2Path)
    {
@@ -29,6 +36,13 @@ public class FilesDemo
       }
    }
 
+   /**
+    * Demonstrates use of {@code Files.mismatch} method added
+    * to JDK 12 to determine whether two files are the same.
+    * 
+    * @param file1Path Path of first file.
+    * @param file2Path Path of second file.
+    */
    private static void demonstrateMismatch(
       final Path file1Path, final Path file2Path)
    {
@@ -45,6 +59,15 @@ public class FilesDemo
       }
    }
 
+   /**
+    * Main executable function to be demonstrate determining if two
+    * files are the same via {@code Files.isSameFile} and JDK 12's
+    * new {@code Files.mismatch} methods.
+    * 
+    * @param arguments Command-line arguments: the paths of the two
+    *    files to be compared as part of this demonstration are
+    *    expected.
+    */
    public static void main(final String[] arguments)
    {
       if (arguments.length < 2)
