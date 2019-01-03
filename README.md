@@ -3,6 +3,9 @@ This repository contains Java-related demonstrations typically discussed in grea
 
 Here are the blog posts associated with these demonstrative examples:
 
+* [Compact Number Formatting Comes to JDK 12](https://marxsoftware.blogspot.com/2018/12/jdk12-compact-number-formatting.html) - 26 December 2018
+* [JDK 12's Files.mismatch Method](https://marxsoftware.blogspot.com/2018/11/jdk-12s-filesmismatch-method.html) - 16 November 2018
+* [JDK 12 Switch Expression Encountering Unanticipated Enum Value](http://marxsoftware.blogspot.com/2018/09/jdk-12-switch-expression-enum.html)
 * [Using Google's Protocol Buffers with Java](http://marxsoftware.blogspot.com/2018/01/protocol-buffers-java.html) - 16 January 2018
 * [Too Many PreparedStatement Placeholders in Oracle JDBC](http://marxsoftware.blogspot.com/2017/11/too-many-placeholders-ora-01745.html) - 24 November 2017
 * [Simple String Representation of Java Decimal Numbers without Scientific Notation](http://marxsoftware.blogspot.com/2017/11/java-decimals-strings.html) - 20 November 2017
