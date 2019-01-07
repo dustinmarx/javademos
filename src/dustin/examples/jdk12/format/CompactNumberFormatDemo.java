@@ -49,8 +49,8 @@ public class CompactNumberFormatDemo
       out.println("\tUK/Long:  " + numberFormatUkLong.format(numberToFormat));
       out.println("\tFR/Short: " + numberFormatFrShort.format(numberToFormat));
       out.println("\tFR/Long:  " + numberFormatFrLong.format(numberToFormat));
-      out.println("\tGR/Short: " + numberFormatGrShort.format(numberToFormat));
-      out.println("\tGR/Long:  " + numberFormatGrLong.format(numberToFormat));
+      out.println("\tDE/Short: " + numberFormatGrShort.format(numberToFormat));
+      out.println("\tDE/Long:  " + numberFormatGrLong.format(numberToFormat));
       out.println("\tIT/Short: " + numberFormatItShort.format(numberToFormat));
       out.println("\tIT/Long:  " + numberFormatItLong.format(numberToFormat));
    }
@@ -92,8 +92,8 @@ public class CompactNumberFormatDemo
       out.println("\tUK/Long:  " + numberFormatUkLong.format(numberToFormat));
       out.println("\tFR/Short: " + numberFormatFrShort.format(numberToFormat));
       out.println("\tFR/Long:  " + numberFormatFrLong.format(numberToFormat));
-      out.println("\tGR/Short: " + numberFormatGrShort.format(numberToFormat));
-      out.println("\tGR/Long:  " + numberFormatGrLong.format(numberToFormat));
+      out.println("\tDE/Short: " + numberFormatGrShort.format(numberToFormat));
+      out.println("\tDE/Long:  " + numberFormatGrLong.format(numberToFormat));
       out.println("\tIT/Short: " + numberFormatItShort.format(numberToFormat));
       out.println("\tIT/Long:  " + numberFormatItLong.format(numberToFormat));
    }
