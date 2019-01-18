@@ -39,6 +39,26 @@ public class CompactNumberFormatDemo
    }
 
    /**
+    * Generates standardized map of labels to Compact Number Format
+    * instances described by the labels. The instances of {@code NumberFormat}
+    * are created with Locale and Style only and with the provided number
+    * of minimum fractional digits.
+    *
+    * @return Mapping of label to an instance of a Compact Number Format
+    *    consisting of a Locale, Style, and specified minimum number of fractional
+    *    digits that is described by the label.
+    */
+   private static Map<String, NumberFormat> generateCompactNumberFormats(
+      final int minimumNumberFractionDigits
+   )
+   {
+      var numberFormats = generateCompactNumberFormats();
+      numberFormats.forEach((label, numberFormat) ->
+         numberFormat.setMinimumFractionDigits(minimumNumberFractionDigits));
+      return numberFormats;
+   }
+
+   /**
     * Demonstrates compact number formatting in a variety of locales
     * and number formats against the provided {@code long} value.
     * @param numberToFormat Value of type {@code long} that is to be
@@ -65,6 +85,18 @@ public class CompactNumberFormatDemo
    {
       final Map<String, NumberFormat> numberFormats = generateCompactNumberFormats();
       out.println("Demonstrating Compact Number Formatting on double '" + numberToFormat + "':");
+      numberFormats.forEach((label, numberFormat) ->
+         out.println("\t" +  label + ": " + numberFormat.format(numberToFormat))
+      );
+   }
+
+   private static void demonstrateCompactNumberFormattingOneFractionalDigitMinimum(
+      final long numberToFormat)
+   {
+      final Map<String, NumberFormat> numberFormats = generateCompactNumberFormats(1);
+      out.println(
+         "Demonstrating Compact Number Formatting on long '" + numberToFormat
+            + "' with 1 minimum fraction digit:");
       numberFormats.forEach((label, numberFormat) ->
          out.println("\t" +  label + ": " + numberFormat.format(numberToFormat))
       );
@@ -101,6 +133,22 @@ public class CompactNumberFormatDemo
    }
 
    /**
+    * Invoke demonstrations of compact number formatting on {@code double}
+    * values ranging from 15.0 to 15,000,000.0 and with a minimum fractional
+    * digits of 1.
+    */
+   private static void demonstrateOnLongValuesWithSingleMinimumFractionDigit()
+   {
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(15);
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(150);
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(1_500);
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(15_000);
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(150_000);
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(1_500_000);
+      demonstrateCompactNumberFormattingOneFractionalDigitMinimum(15_000_000);
+   }
+
+   /**
     * Main demonstration executable.
     * @param arguments Command-line arguments: none expected.
     */
@@ -108,5 +156,6 @@ public class CompactNumberFormatDemo
    {
       demonstrateOnLongValues();
       demonstrateOnDoubleValues();
+      demonstrateOnLongValuesWithSingleMinimumFractionDigit();
    }
 }
