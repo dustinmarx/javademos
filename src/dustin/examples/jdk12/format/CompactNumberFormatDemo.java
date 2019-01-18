@@ -90,6 +90,15 @@ public class CompactNumberFormatDemo
       );
    }
 
+   /**
+    * Demonstrates compact number formatting in a variety of locales
+    * and number formats against the provided {@code long} value and
+    * with a minimum fractional digits of 1 specified.
+    * @param numberToFormat Value of type {@code long} that is to be
+    *    formatted using compact number formatting and a variety of
+    *    locales and number formats and with a single minimal fractional
+    *    digit.
+    */
    private static void demonstrateCompactNumberFormattingOneFractionalDigitMinimum(
       final long numberToFormat)
    {
