@@ -3,7 +3,9 @@ package dustin.examples.jdk12.format;
 import static java.lang.System.out;
 
 import java.text.NumberFormat;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 /**
  * Demonstrate Compact Number Format support added to
@@ -13,6 +15,30 @@ import java.util.Locale;
 public class CompactNumberFormatDemo
 {
    /**
+    * Generates standardized map of labels to Compact Number Format
+    * instances described by the labels. The instances of {@code NumberFormat}
+    * are created with Locale and Style only.
+    *
+    * @return Mapping of label to an instance of a Compact Number Format
+    *    consisting of a Locale and Style that is described by the label.
+    */
+   private static Map<String, NumberFormat> generateCompactNumberFormats()
+   {
+      var numberFormats = new LinkedHashMap<String, NumberFormat>();
+      numberFormats.put("Default", NumberFormat.getCompactNumberInstance());
+      numberFormats.put("US/Long", NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.LONG));
+      numberFormats.put("UK/Short", NumberFormat.getCompactNumberInstance(Locale.UK, NumberFormat.Style.SHORT));
+      numberFormats.put("UK/Long", NumberFormat.getCompactNumberInstance(Locale.UK, NumberFormat.Style.LONG));
+      numberFormats.put("FR/Short", NumberFormat.getCompactNumberInstance(Locale.FRANCE, NumberFormat.Style.SHORT));
+      numberFormats.put("FR/Long", NumberFormat.getCompactNumberInstance(Locale.FRANCE, NumberFormat.Style.LONG));
+      numberFormats.put("DE/Short", NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.SHORT));
+      numberFormats.put("DE/Long", NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.LONG));
+      numberFormats.put("IT/Short", NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.SHORT));
+      numberFormats.put("IT/Long", NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.LONG));
+      return numberFormats;
+   }
+
+   /**
     * Demonstrates compact number formatting in a variety of locales
     * and number formats against the provided {@code long} value.
     * @param numberToFormat Value of type {@code long} that is to be
@@ -21,38 +47,11 @@ public class CompactNumberFormatDemo
     */
    private static void demonstrateCompactNumberFormatting(final long numberToFormat)
    {
-      final NumberFormat numberFormatDefault
-         = NumberFormat.getCompactNumberInstance();
-      final NumberFormat numberFormatUsLong
-         = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatUkShort
-         = NumberFormat.getCompactNumberInstance(Locale.UK, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatUkLong
-         = NumberFormat.getCompactNumberInstance(Locale.UK, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatFrShort
-         = NumberFormat.getCompactNumberInstance(Locale.FRANCE, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatFrLong
-         = NumberFormat.getCompactNumberInstance(Locale.FRANCE, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatGrShort
-         = NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatGrLong
-         = NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatItShort
-         = NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatItLong
-         = NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.LONG);
-
-      out.println("Demonstrating Compact Number Formatting on '" + numberToFormat + "':");
-      out.println("\tDefault:  " + numberFormatDefault.format(numberToFormat));
-      out.println("\tUS/Long:  " + numberFormatUsLong.format(numberToFormat));
-      out.println("\tUK/Short: " + numberFormatUkShort.format(numberToFormat));
-      out.println("\tUK/Long:  " + numberFormatUkLong.format(numberToFormat));
-      out.println("\tFR/Short: " + numberFormatFrShort.format(numberToFormat));
-      out.println("\tFR/Long:  " + numberFormatFrLong.format(numberToFormat));
-      out.println("\tDE/Short: " + numberFormatGrShort.format(numberToFormat));
-      out.println("\tDE/Long:  " + numberFormatGrLong.format(numberToFormat));
-      out.println("\tIT/Short: " + numberFormatItShort.format(numberToFormat));
-      out.println("\tIT/Long:  " + numberFormatItLong.format(numberToFormat));
+      final Map<String, NumberFormat> numberFormats = generateCompactNumberFormats();
+      out.println("Demonstrating Compact Number Formatting on long '" + numberToFormat + "':");
+      numberFormats.forEach((label, numberFormat) ->
+         out.println("\t" +  label + ": " + numberFormat.format(numberToFormat))
+      );
    }
 
    /**
@@ -64,38 +63,11 @@ public class CompactNumberFormatDemo
     */
    private static void demonstrateCompactNumberFormatting(final double numberToFormat)
    {
-      final NumberFormat numberFormatDefault
-         = NumberFormat.getCompactNumberInstance();
-      final NumberFormat numberFormatUsLong
-         = NumberFormat.getCompactNumberInstance(Locale.US, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatUkShort
-         = NumberFormat.getCompactNumberInstance(Locale.UK, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatUkLong
-         = NumberFormat.getCompactNumberInstance(Locale.UK, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatFrShort
-         = NumberFormat.getCompactNumberInstance(Locale.FRANCE, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatFrLong
-         = NumberFormat.getCompactNumberInstance(Locale.FRANCE, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatGrShort
-         = NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatGrLong
-         = NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.LONG);
-      final NumberFormat numberFormatItShort
-         = NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.SHORT);
-      final NumberFormat numberFormatItLong
-         = NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.LONG);
-
-      out.println("Demonstrating Compact Number Formatting on '" + numberToFormat + "':");
-      out.println("\tDefault:  " + numberFormatDefault.format(numberToFormat));
-      out.println("\tUS/Long:  " + numberFormatUsLong.format(numberToFormat));
-      out.println("\tUK/Short: " + numberFormatUkShort.format(numberToFormat));
-      out.println("\tUK/Long:  " + numberFormatUkLong.format(numberToFormat));
-      out.println("\tFR/Short: " + numberFormatFrShort.format(numberToFormat));
-      out.println("\tFR/Long:  " + numberFormatFrLong.format(numberToFormat));
-      out.println("\tDE/Short: " + numberFormatGrShort.format(numberToFormat));
-      out.println("\tDE/Long:  " + numberFormatGrLong.format(numberToFormat));
-      out.println("\tIT/Short: " + numberFormatItShort.format(numberToFormat));
-      out.println("\tIT/Long:  " + numberFormatItLong.format(numberToFormat));
+      final Map<String, NumberFormat> numberFormats = generateCompactNumberFormats();
+      out.println("Demonstrating Compact Number Formatting on double '" + numberToFormat + "':");
+      numberFormats.forEach((label, numberFormat) ->
+         out.println("\t" +  label + ": " + numberFormat.format(numberToFormat))
+      );
    }
 
    /**
