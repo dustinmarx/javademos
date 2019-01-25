@@ -35,6 +35,8 @@ public class CompactNumberFormatDemo
       numberFormats.put("DE/Long", NumberFormat.getCompactNumberInstance(Locale.GERMANY, NumberFormat.Style.LONG));
       numberFormats.put("IT/Short", NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.SHORT));
       numberFormats.put("IT/Long", NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.LONG));
+      numberFormats.put("ES/Short", NumberFormat.getCompactNumberInstance(new Locale("es", "ES"), NumberFormat.Style.SHORT));
+      numberFormats.put("ES/Long", NumberFormat.getCompactNumberInstance(new Locale("es", "ES"), NumberFormat.Style.LONG));
       return numberFormats;
    }
 
