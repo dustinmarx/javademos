@@ -2,6 +2,8 @@ package dustin.examples.jdk12.format;
 
 import static java.lang.System.out;
 
+import java.text.CompactNumberFormat;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -37,7 +39,60 @@ public class CompactNumberFormatDemo
       numberFormats.put("IT/Long", NumberFormat.getCompactNumberInstance(Locale.ITALY, NumberFormat.Style.LONG));
       numberFormats.put("ES/Short", NumberFormat.getCompactNumberInstance(new Locale("es", "ES"), NumberFormat.Style.SHORT));
       numberFormats.put("ES/Long", NumberFormat.getCompactNumberInstance(new Locale("es", "ES"), NumberFormat.Style.LONG));
+      numberFormats.put("DE/Custom", generateCustomizedGermanCompactNumberFormat());
       return numberFormats;
+   }
+
+   /**
+    * Provides an instance of {@code CompactNumberFormat} that has been
+    * custom created via that class's constructor and represents an
+    * alternate Germany German representation to that provided by an
+    * instance of {@code CompactNumberFormat} obtained via the static
+    * factory methods of {@code NumberFormat} for {@code Locale.GERMANY}.
+    *
+    * @return Instance of {@code CompactNumberFormat} with customized
+    *    alternate German compact pattern representations.
+    */
+   private static CompactNumberFormat generateCustomizedGermanCompactNumberFormat()
+   {
+      final String[] germanyGermanCompactPatterns
+         = {"", "", "", "0k", "00k", "000k", "0m", "00m", "000m", "0b", "00b", "000b", "0t", "00t", "000t"};
+      final DecimalFormat germanyGermanDecimalFormat
+         = acquireDecimalFormat(Locale.GERMANY);
+      final CompactNumberFormat customGermanCompactNumberFormat
+         = new CompactNumberFormat(
+            germanyGermanDecimalFormat.toPattern(),
+            germanyGermanDecimalFormat.getDecimalFormatSymbols(),
+            germanyGermanCompactPatterns);
+      return customGermanCompactNumberFormat;
+   }
+
+   /**
+    * Provides an instance of {@code DecimalFormat} associated with
+    * the provided instance of {@code Locale}.
+    *
+    * @param locale Locale for which an instance of {@code DecimalFormat}
+    *    is desired.
+    * @return Instance of {@code DecimalFormat} corresponding to the
+    *    provided {@code Locale}.
+    * @throws ClassCastException Thrown if I'm unable to acquire a
+    *    {@code DecimalFormat} instance from the static factory method
+    *    on class {@code NumberFormat} (the approach recommended in the
+    *    class-level Javadoc for {@code DecimalFormat}).
+    */
+   private static DecimalFormat acquireDecimalFormat(final Locale locale)
+   {
+      final NumberFormat generalGermanyGermanFormat
+         = NumberFormat.getInstance(locale);
+      if (generalGermanyGermanFormat instanceof DecimalFormat)
+      {
+         return (DecimalFormat) generalGermanyGermanFormat;
+      }
+      throw new ClassCastException(
+           "Unable to acquire DecimalFormat in recommended manner;"
+         + " presented with NumberFormat type of '"
+         + generalGermanyGermanFormat.getClass().getSimpleName()
+         + "' instead.");
    }
 
    /**
@@ -46,13 +101,14 @@ public class CompactNumberFormatDemo
     * are created with Locale and Style only and with the provided number
     * of minimum fractional digits.
     *
+    * @param minimumNumberFractionDigits Minimum number of fractional digits
+    *    for each {@code NumberFormat} value in my returned mapping.
     * @return Mapping of label to an instance of a Compact Number Format
     *    consisting of a Locale, Style, and specified minimum number of fractional
     *    digits that is described by the label.
     */
    private static Map<String, NumberFormat> generateCompactNumberFormats(
-      final int minimumNumberFractionDigits
-   )
+      final int minimumNumberFractionDigits)
    {
       var numberFormats = generateCompactNumberFormats();
       numberFormats.forEach((label, numberFormat) ->
@@ -104,7 +160,9 @@ public class CompactNumberFormatDemo
    private static void demonstrateCompactNumberFormattingOneFractionalDigitMinimum(
       final long numberToFormat)
    {
-      final Map<String, NumberFormat> numberFormats = generateCompactNumberFormats(1);
+      final int minimumNumberFractionDigits = 1;
+      final Map<String, NumberFormat> numberFormats
+         = generateCompactNumberFormats(minimumNumberFractionDigits);
       out.println(
          "Demonstrating Compact Number Formatting on long '" + numberToFormat
             + "' with 1 minimum fraction digit:");
