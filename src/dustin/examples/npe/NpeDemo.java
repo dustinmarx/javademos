@@ -2,37 +2,24 @@ package dustin.examples.npe;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 
 import static java.lang.System.out;
 
 /**
  * Demonstrate {@code NullPointerException} nuances.
+ *
+ * Several of my methods' comments include references to
+ * <b>JDK-8218628</b> (https://bugs.openjdk.java.net/browse/JDK-8218628).
+ * Those methods' names and implementations are correlated with
+ * examples provided in that bug report. The names of variables,
+ * fields, and classes in those Javadoc method comments typically
+ * refer to test code written for the referenced bug that is available at
+ * http://cr.openjdk.java.net/~goetz/wr19/8218628-exMsg-NPE/04-RogerRiggs/test/hotspot/jtreg/runtime/exceptionMsgs/NullPointerException/NullPointerExceptionTest.java.html.
  */
 public class NpeDemo
 {
    /** Field that is intentionally {@code null} for demonstration purposes. */
    private final String nullInstanceField = null;
-
-   /**
-    * Writes the {@code toString()} representation of the provided
-    * instance to standard output.
-    *
-    * @param objectToPrint Object whose {@code toString()} method
-    *    will be invoked to write the resultant string to
-    *    standard output.
-    * @throws NullPointerException Thrown if the provided
-    *    object is {@code null}.
-    */
-   public void printObject(final Object objectToPrint)
-   {
-      // Normally, it'd be safer to use String.valueOf(objectToPrint),
-      // but we intentionally want the potential here for a
-      // NullPointerException to be thrown.
-      out.println(objectToPrint.toString());
-   }
 
    /**
     * Demonstrates first example from JDK-8218628:
@@ -68,7 +55,7 @@ public class NpeDemo
    {
       try
       {
-         boolean[] za1 = null;
+         final boolean[] za1 = null;
          final int size = za1.length;
       }
       catch (NullPointerException npe)
@@ -89,7 +76,7 @@ public class NpeDemo
    {
       try
       {
-         float[] fa1 = null;
+         final float[] fa1 = null;
          fa1[0] = 0;
       }
       catch (NullPointerException npe)
@@ -181,7 +168,7 @@ public class NpeDemo
          out.println(extractNpeStackTrace(npe));
       }
    }
-   
+
    /**
     * Demonstrates {@code NullPointerException} presentation for
     * cases spelled out in JDK-8218628
@@ -197,7 +184,7 @@ public class NpeDemo
       demonstrateSixthExampleMethodInvocationOnNullInstanceField();
       demonstrateSeventhExampleSynchronizedNullInstanceField();
    }
-   
+
    /**
     * Extracts the stack trace of the provided {@code NullPointerException}
     * as a {@code String}.
@@ -236,14 +223,15 @@ public class NpeDemo
       return headerBar + "| " + title + " |\n" + headerBar;
    }
 
+   /**
+    * Application that demonstrates {@code NullPointerException}
+    * in action.
+    *
+    * @param arguments Command-line arguments: none expected.
+    */
    public static void main(final String[] arguments)
    {
       final NpeDemo instance = new NpeDemo();
       instance.demonstrateJdk8218628Examples();
-//      instance.printObject("Inspired");
-//      instance.printObject("Actual");
-//      instance.printObject("Events");
-//      instance.printObject(null);
-//      instance.printObject("Dustin");
    }
 }
