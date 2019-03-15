@@ -174,7 +174,7 @@ public class NpeDemo
     * cases spelled out in JDK-8218628
     * (https://bugs.openjdk.java.net/browse/JDK-8218628).
     */
-   public void demonstrateJdk8218628Examples()
+   private void demonstrateJdk8218628Examples()
    {
       demonstrateFirstExampleIndexAccessOnNullBooleanArray();
       demonstrateSecondExampleLengthOnNullBooleanArray();
@@ -183,6 +183,81 @@ public class NpeDemo
       demonstrateFifthExampleThrowingConstantNull();
       demonstrateSixthExampleMethodInvocationOnNullInstanceField();
       demonstrateSeventhExampleSynchronizedNullInstanceField();
+   }
+
+   /**
+    * Demonstrates difficulty of finding cause of {@code NullPointerException}
+    * when a series of methods are strung together and in which multiple of
+    * these methods could return {@code null}.
+    */
+   private void demonstrateNullLostInSeriesOfMethodInvocationsInSingleStatement()
+   {
+      try
+      {
+         out.println("The address is: " +
+            new DysfunctionalLocation().getPlanet().getContinent().getNation().getProvince().getCity().getStreet().getAddress().toString());
+      }
+      catch (NullPointerException npe)
+      {
+         out.println(generateHeader(">>> Null Lost in Long Series of Method Invocations in Single Statement"));
+         out.println(extractNpeStackTrace(npe));
+      }
+   }
+
+   /**
+    * Demonstrates difficulty of finding cause of {@code NullPointerException}
+    * when multiple arguments to a constructor can be {@code null} and might
+    * lead to a {@code NullPointerException} when dereferenced.
+    */
+   private void demonstrateNullLostInConstructorAcceptingMultiplePotentiallyNullArgumentsDereferenced()
+   {
+      final Boolean theBoolean = Boolean.FALSE;
+      final Byte theByte = 'a';
+      final Character theChar = 'a';
+      final Short theShort = 1;
+      final Integer theInteger = 1;
+      final Long theLong = null;
+      final Float theFloat = 2.5f;
+      final Double theDouble = 5.4;
+      try
+      {
+         final DysfunctionalNullDereferencingArguments arguments
+            = new DysfunctionalNullDereferencingArguments(
+               theBoolean, theByte, theChar, theShort, theInteger, theLong, theFloat, theDouble);
+      }
+      catch (NullPointerException npe)
+      {
+         out.println(generateHeader(">>> Null Lost in Dereferenced Constructor Arguments"));
+         out.println(extractNpeStackTrace(npe));
+      }
+   }
+
+   /**
+    * Demonstrates difficulty of finding cause of {@code NullPointerException}
+    * when multiple arguments to a constructor can be {@code null} and might
+    * lead to a {@code NullPointerException} when dereferenced.
+    */
+   private void demonstrateNullLostInMethodAcceptingMultiplePotentiallyNullArgumentsDereferenced()
+   {
+      final Boolean theBoolean = Boolean.FALSE;
+      final Byte theByte = 'a';
+      final Character theChar = 'a';
+      final Short theShort = 1;
+      final Integer theInteger = 1;
+      final Long theLong = null;
+      final Float theFloat = 2.5f;
+      final Double theDouble = 5.4;
+      try
+      {
+         final DysfunctionalNullDereferencingArguments arguments
+            = new DysfunctionalNullDereferencingArguments();
+         arguments.setValues(theBoolean, theByte, theChar, theShort, theInteger, theLong, theFloat, theDouble);
+      }
+      catch (NullPointerException npe)
+      {
+         out.println(generateHeader(">>> Null Lost in Dereferenced Method Arguments"));
+         out.println(extractNpeStackTrace(npe));
+      }
    }
 
    /**
@@ -233,5 +308,8 @@ public class NpeDemo
    {
       final NpeDemo instance = new NpeDemo();
       instance.demonstrateJdk8218628Examples();
+      instance.demonstrateNullLostInSeriesOfMethodInvocationsInSingleStatement();
+      instance.demonstrateNullLostInConstructorAcceptingMultiplePotentiallyNullArgumentsDereferenced();
+      instance.demonstrateNullLostInMethodAcceptingMultiplePotentiallyNullArgumentsDereferenced();
    }
 }
