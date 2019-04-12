@@ -14,4 +14,4 @@ Here are the blog posts associated with these demonstrative examples:
   * This example uses internal APIs (`jdk.internal.misc.VM` and `jdk.internal.SharedSecrets`) - use at own risk!
   * `--add-exports=java.base/jdk.internal.misc=ALL-UNNAMED`
 
-
+See the [customannotations](https://github.com/dustinmarx/customannotations) repository for some custom Java annotations examples that demonstrate authoring custom Java annotations.
