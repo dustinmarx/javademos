@@ -1,5 +1,7 @@
 package dustin.examples.valhalla.lw2;
 
+import java.io.Serializable;
+
 /**
  * Example of a Project Valhalla LW2 prototype "inline type"
  * adapted from the OpenJDK LW2 Wiki page
@@ -16,7 +18,7 @@ package dustin.examples.valhalla.lw2;
  */
 public inline class InlineTypeExample
 //   extends Parent
-   implements Comparable<InlineTypeExample?>
+   implements Comparable<InlineTypeExample?>, Serializable
 {
    int someIntegerValue;
 
@@ -52,5 +54,40 @@ public inline class InlineTypeExample
 //   public void setIntegerValue(final int newIntegerValue)
 //   {
 //      someIntegerValue = newIntegerValue;
+//   }
+
+//   /**
+//    * The Valhalla LW2 early access build compiler currently allows
+//    * me to override this equals method, but it doesn't seem to
+//    * impact the ability to use {@code ==} when comparing instances
+//    * of this inline type.
+//    */
+//   @Override
+//   public boolean equals(Object object)
+//   {
+//      return false;
+//   }
+
+//   /**
+//    * The Valhalla LW2 early access build compiler currently allows
+//    * me to override this hashCode() method and this overridden value
+//    * is what is returned when this method is called.
+//    */
+//   @Override
+//   public int hashCode()
+//   {
+//      return someIntegerValue;
+//   }
+
+//   /**
+//    * The Valhalla LW2 early access build compiler currently allows
+//    * me to override this toString() method and this overridden
+//    * String representation is what is provided when this method is
+//    * invoked.
+//    */
+//   @Override
+//   public String toString()
+//   {
+//      return String.valueOf(someIntegerValue);
 //   }
 }
