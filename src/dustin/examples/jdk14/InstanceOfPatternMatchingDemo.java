@@ -10,34 +10,28 @@ public class InstanceOfPatternMatchingDemo
 {
    static void makeAnimalNoises(final Object animal)
    {
-      if (animal instanceof Dog)
+      if (animal instanceof Dog dog)
       {
-         final Dog dog = (Dog) animal;
          out.println(dog.bark());
       }
-      else if (animal instanceof Cat)
+      else if (animal instanceof Cat cat)
       {
-         final Cat cat = (Cat) animal;
          out.println(cat.meow());
       }
-      else if (animal instanceof Duck)
+      else if (animal instanceof Duck duck)
       {
-         final Duck duck = (Duck) animal;
          out.println(duck.quack());
       }
-      else if (animal instanceof Horse)
+      else if (animal instanceof Horse horse)
       {
-         final Horse horse = (Horse) animal;
          out.println(horse.neigh());
       }
-      else if (animal instanceof Cow)
+      else if (animal instanceof Cow cow)
       {
-         final Cow cow = (Cow) animal;
          out.println(cow.moo());
       }
-      else if (animal instanceof Lion)
+      else if (animal instanceof Lion lion)
       {
-         final Lion lion = (Lion) animal;
          out.println(lion.roar());
       }
       else
