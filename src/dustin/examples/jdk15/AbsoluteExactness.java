@@ -38,11 +38,11 @@ public class AbsoluteExactness
    {
       try
       {
-         out.println("Math.abs(" + integer + "): " + Math.absExact(integer));
+         out.println("Math.absExact(" + integer + "): " + Math.absExact(integer));
       }
       catch (ArithmeticException exception)
       {
-         err.println("Math.abs(" + integer + "): " + exception);
+         err.println("Math.absExact(" + integer + "): " + exception);
       }
    }
 
@@ -50,11 +50,11 @@ public class AbsoluteExactness
    {
       try
       {
-         out.println("Math.abs(" + longNumber + "L): " + Math.absExact(longNumber));
+         out.println("Math.absExact(" + longNumber + "L): " + Math.absExact(longNumber));
       }
       catch (ArithmeticException exception)
       {
-         err.println("Math.abs(" + longNumber + "L): " + exception);
+         err.println("Math.absExact(" + longNumber + "L): " + exception);
       }
    }
 
@@ -62,11 +62,11 @@ public class AbsoluteExactness
    {
       try
       {
-         out.println("StrictMath.abs(" + integer + "): " + StrictMath.absExact(integer));
+         out.println("StrictMath.absExact(" + integer + "): " + StrictMath.absExact(integer));
       }
       catch (ArithmeticException exception)
       {
-         err.println("StrictMath.abs(" + integer + "):" + exception);
+         err.println("StrictMath.absExact(" + integer + "):" + exception);
       }
    }
 
@@ -74,11 +74,11 @@ public class AbsoluteExactness
    {
       try
       {
-         out.println("StrictMath.abs(" + longNumber + "L): " + StrictMath.absExact(longNumber));
+         out.println("StrictMath.absExact(" + longNumber + "L): " + StrictMath.absExact(longNumber));
       }
       catch (ArithmeticException exception)
       {
-         err.println("StrictMath.abs(" + longNumber + "L): " + exception);
+         err.println("StrictMath.absExact(" + longNumber + "L): " + exception);
       }
    }
 
