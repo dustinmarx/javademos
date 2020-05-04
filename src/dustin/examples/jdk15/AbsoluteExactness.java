@@ -4,6 +4,7 @@
  */
 package dustin.examples.jdk15;
 
+import static java.lang.System.err;
 import static java.lang.System.out;
 
 /**
@@ -33,6 +34,54 @@ public class AbsoluteExactness
       out.println("StrictMath.abs(" + longNumber + "L): " + StrictMath.abs(longNumber));
    }
 
+   public void demonstrateMathAbsExactInteger(final int integer)
+   {
+      try
+      {
+         out.println("Math.abs(" + integer + "): " + Math.absExact(integer));
+      }
+      catch (ArithmeticException exception)
+      {
+         err.println("Math.abs(" + integer + "): " + exception);
+      }
+   }
+
+   public void demonstrateMathAbsExactLong(final long longNumber)
+   {
+      try
+      {
+         out.println("Math.abs(" + longNumber + "L): " + Math.absExact(longNumber));
+      }
+      catch (ArithmeticException exception)
+      {
+         err.println("Math.abs(" + longNumber + "L): " + exception);
+      }
+   }
+
+   public void demonstrateStrictMathAbsExactInteger(final int integer)
+   {
+      try
+      {
+         out.println("StrictMath.abs(" + integer + "): " + StrictMath.absExact(integer));
+      }
+      catch (ArithmeticException exception)
+      {
+         err.println("StrictMath.abs(" + integer + "):" + exception);
+      }
+   }
+
+   public void demonstrateStrictMathAbsExactLong(final long longNumber)
+   {
+      try
+      {
+         out.println("StrictMath.abs(" + longNumber + "L): " + StrictMath.absExact(longNumber));
+      }
+      catch (ArithmeticException exception)
+      {
+         err.println("StrictMath.abs(" + longNumber + "L): " + exception);
+      }
+   }
+
    /**
     * Main executable function that demonstrates the new "absExact"
     * methods added to {@link Math} and {@link StrictMath} with JDK 15.
@@ -52,5 +101,16 @@ public class AbsoluteExactness
       instance.demonstrateStrictMathAbsInteger(Integer.MIN_VALUE);
       instance.demonstrateStrictMathAbsLong(Long.MIN_VALUE+1);
       instance.demonstrateStrictMathAbsLong(Long.MIN_VALUE);
+
+      // Demonstrate JDK 15-introduced Math/StrictMath "absExact" functions
+      // on minimum values.
+      instance.demonstrateMathAbsExactInteger(Integer.MIN_VALUE+1);
+      instance.demonstrateMathAbsExactInteger(Integer.MIN_VALUE);
+      instance.demonstrateMathAbsExactLong(Long.MIN_VALUE+1);
+      instance.demonstrateMathAbsExactLong(Long.MIN_VALUE);
+      instance.demonstrateStrictMathAbsExactInteger(Integer.MIN_VALUE+1);
+      instance.demonstrateStrictMathAbsExactInteger(Integer.MIN_VALUE);
+      instance.demonstrateStrictMathAbsExactLong(Long.MIN_VALUE+1);
+      instance.demonstrateStrictMathAbsExactLong(Long.MIN_VALUE);
    }
 }
