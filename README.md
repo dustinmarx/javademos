@@ -3,6 +3,7 @@ This repository contains Java-related demonstrations typically discussed in grea
 
 Here are the blog posts associated with these demonstrative examples:
 
+* [Day Period Support in JDK 16](http://marxsoftware.blogspot.com/2020/11/day-period-support-in-jdk-16.html) - 23 November 2020
 * [Better Default NullPointerException Messages Coming to Java?](https://marxsoftware.blogspot.com/2019/03/better-nullpointerexception-message.html) - 23 March 2019
 * [Compact Number Formatting Comes to JDK 12](https://marxsoftware.blogspot.com/2018/12/jdk12-compact-number-formatting.html) - 26 December 2018
 * [JDK 12's Files.mismatch Method](https://marxsoftware.blogspot.com/2018/11/jdk-12s-filesmismatch-method.html) - 16 November 2018
