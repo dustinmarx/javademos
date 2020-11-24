@@ -61,16 +61,33 @@ public class DayPeriodDemo
    }
 
    /**
-    * Prints Day Period phraseology for each of 24 hours of day to
-    * standard output.
+    * Prints Day Period phraseology for each of 24 hours of day with
+    * arbitrary minutes, seconds, and nanoseconds to standard output.
     */
    public void printDayPeriodsByHour()
    {
+      out.println("===== Hours With Non-Zero Minutes/Seconds/Nanoseconds =====");
       final DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("hh B");
       for (int hour = 0; hour < 24; hour++)
       {
          final OffsetDateTime dateTime
             = Instant.now().atOffset(ZoneOffset.UTC).withHour(hour);
+         out.println("Hour " + hour + ": \"" + dateTimeFormat.format(dateTime) + "\"");
+      }
+   }
+
+   /**
+    * Prints Day Period phraseology for each of 24 hours of day with
+    * zero minutes, zero seconds, and zero nanoseconds to standard output.
+    */
+   public void printDayPeriodsByHourZeroMinutes()
+   {
+      out.println("===== Exact Hours =====");
+      final DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("hh B");
+      for (int hour = 0; hour < 24; hour++)
+      {
+         final OffsetDateTime dateTime = OffsetDateTime.of(
+            2020, 11, 23, hour, 0, 0, 0, ZoneOffset.UTC);
          out.println("Hour " + hour + ": \"" + dateTimeFormat.format(dateTime) + "\"");
       }
    }
@@ -84,9 +101,11 @@ public class DayPeriodDemo
    {
       final DayPeriodDemo instance = new DayPeriodDemo();
       instance.printCurrentDayPeriod();
+
       final ZonedDateTime now = Instant.now().atZone(ZoneId.systemDefault());
       instance.printHourDayPeriodAndZone(now);
       instance.printHourDayMinutePeriodAndZone(now);
       instance.printDayPeriodsByHour();
+      instance.printDayPeriodsByHourZeroMinutes();
    }
 }
