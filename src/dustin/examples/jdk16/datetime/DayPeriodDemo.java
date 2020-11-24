@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.Locale;
 
 /**
@@ -20,6 +21,9 @@ import java.util.Locale;
  */
 public class DayPeriodDemo
 {
+   /** Default Locale if country/language are not otherwise specified. */
+   private final static Locale DEFAULT_LOCAL = Locale.US;
+
    /**
     * Writes the current day period out to standard output.
     *
@@ -108,11 +112,16 @@ public class DayPeriodDemo
       {
          localeToSet = new Locale(arguments[0], arguments[1]);
       }
+
       if (localeToSet == null)
       {
-         localeToSet = Locale.US;
+         out.println(
+            "WARNING: Unable to determine Locale language/country based on provided command-line arguments "
+               + Arrays.toString(arguments) + "; will use " + DEFAULT_LOCAL + " by default.");
+         localeToSet = DEFAULT_LOCAL;
       }
-      out.println("Setting Default Locale to " + localeToSet);
+
+      out.println("Setting Locale to " + localeToSet);
       Locale.setDefault(localeToSet);
 
       final DayPeriodDemo instance = new DayPeriodDemo();
