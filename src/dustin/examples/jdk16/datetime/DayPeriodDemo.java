@@ -80,7 +80,7 @@ public class DayPeriodDemo
     * Prints Day Period phraseology for each of 24 hours of day with
     * zero minutes, zero seconds, and zero nanoseconds to standard output.
     */
-   public void printDayPeriodsByHourZeroMinutes()
+   public void printDayPeriodsByWholeHours()
    {
       out.println("===== Exact Hours =====");
       final DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("hh B");
@@ -106,6 +106,6 @@ public class DayPeriodDemo
       instance.printHourDayPeriodAndZone(now);
       instance.printHourDayMinutePeriodAndZone(now);
       instance.printDayPeriodsByHour();
-      instance.printDayPeriodsByHourZeroMinutes();
+      instance.printDayPeriodsByWholeHours();
    }
 }
