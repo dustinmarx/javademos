@@ -9,6 +9,7 @@ import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  * Demonstrates Day Period support added via JDK-8247781 ("Day periods support")
@@ -95,10 +96,25 @@ public class DayPeriodDemo
    /**
     * Demonstrates day period formatting.
     *
-    * @param arguments Command line-arguments; none expected.
+    * @param arguments Command line-arguments; first argument is language
+    *    for the Locale and second argument is country for the Locale
+    *    ("en US" or "es DO" for example). If these are not provided or if
+    *    the provided parameters are unexpected, "en US" will be used.
     */
    public static void main(final String[] arguments)
    {
+      Locale localeToSet = null;
+      if (arguments.length > 1)
+      {
+         localeToSet = new Locale(arguments[0], arguments[1]);
+      }
+      if (localeToSet == null)
+      {
+         localeToSet = Locale.US;
+      }
+      out.println("Setting Default Locale to " + localeToSet);
+      Locale.setDefault(localeToSet);
+
       final DayPeriodDemo instance = new DayPeriodDemo();
       instance.printCurrentDayPeriod();
 
