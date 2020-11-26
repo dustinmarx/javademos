@@ -8,8 +8,8 @@ import static java.lang.System.out;
 /**
  * Demonstrates three new methods added to {@link Objects} class
  * with JDK 16 Early Access Build 25 for range/index checks on
- * <code>long</code> values. These methods correspond to these
- * integer versions added by JDK 9:
+ * {@code long} values. These methods correspond to these integer 
+ * versions added by JDK 9:
  * <ul>
  *    <li>{@link Objects#checkIndex(int, int)}</li>
  *    <li>{@link Objects#checkFromToIndex(int, int, int)}</li>
