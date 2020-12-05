@@ -200,11 +200,11 @@ public class DynamicPreparedStatementParameters
       out.println("New Fangled 'IN' (one element): \"" + newFangledIn1 + "\"");
       out.println("New Fangled 'IN' (four elements): \"" + newFangledIn4 + "\"");
 
-      instance.assertEquality(traditionalInOne1, traditionalInTwo1);
-      instance.assertEquality(traditionalInOne1, newFangledIn1);
+      assertEquality(traditionalInOne1, traditionalInTwo1);
+      assertEquality(traditionalInOne1, newFangledIn1);
 
-      instance.assertEquality(traditionalInOne4, traditionalInTwo4);
-      instance.assertEquality(traditionalInOne4, newFangledIn4);
+      assertEquality(traditionalInOne4, traditionalInTwo4);
+      assertEquality(traditionalInOne4, newFangledIn4);
 
       final String traditionalOrOne1 = instance.generateOrClausesTraditionallyOne(testColumnId, 1);
       final String traditionalOrTwo1 = instance.generateOrClausesTraditionallyTwo(testColumnId, 1);
@@ -221,8 +221,8 @@ public class DynamicPreparedStatementParameters
       out.println("New Fangled 'OR' (one element): \"" + newFangledOr1 + "\"");
       out.println("New Fangled 'OR' (four elements): \"" + newFangledOr4 + "\"");
 
-      instance.assertEquality(traditionalOrOne1, traditionalOrTwo1);
-      instance.assertEquality(traditionalOrOne1, newFangledOr1);
+      assertEquality(traditionalOrOne1, traditionalOrTwo1);
+      assertEquality(traditionalOrOne1, newFangledOr1);
    }
 
    /**
@@ -235,7 +235,7 @@ public class DynamicPreparedStatementParameters
     * @throws RuntimeException Thrown if the the supplied parameters are considered
     *    NOT equal.
     */
-   private void assertEquality(final Object first, final Object second)
+   private static void assertEquality(final Object first, final Object second)
    {
       if (!Objects.equals(first, second))
       {
