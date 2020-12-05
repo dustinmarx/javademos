@@ -3,6 +3,7 @@ This repository contains Java-related demonstrations typically discussed in grea
 
 Here are the blog posts associated with these demonstrative examples:
 
+* [JDK 16: Checking Indexes and Ranges of Longs](http://marxsoftware.blogspot.com/2020/11/jdk16-check-long-indexes-ranges.html) - 28 November 2020
 * [Day Period Support in JDK 16](http://marxsoftware.blogspot.com/2020/11/day-period-support-in-jdk-16.html) - 23 November 2020
 * [JDK16 javac xlint Warning about Default Constructors](http://marxsoftware.blogspot.com/2020/08/jdk16-javac-xlint-warning-default-constructors.html) - 21 August 2020
 * [Better Default NullPointerException Messages Coming to Java?](https://marxsoftware.blogspot.com/2019/03/better-nullpointerexception-message.html) - 23 March 2019
