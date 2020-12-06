@@ -14,6 +14,16 @@ import static java.lang.System.out;
  * {@code OR} approaches. Examples include "traditional"
  * implementations and implementations taking advantage of
  * {@link String}'s {@link String#repeat(int)} method.
+ * 
+ * Note that the methods in this class do not have any
+ * guards to prevent a zero or negative number of parameters
+ * (placeholders) being supplied to the methods to allow
+ * for clearer presentation of the demonstrative code. These
+ * {@code public} methods would need those guards in practice.
+ * Similarly, column name parameters are not checked for
+ * non-{@code null}/non-empty content, but should be in
+ * these {@code public} methods when used for more than
+ * demonstrative purposes.
  */
 public class DynamicPreparedStatementParameters
 {
