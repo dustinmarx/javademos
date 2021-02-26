@@ -98,7 +98,7 @@ public class NullSafeTactics
    public void demonstrateObjectsToStringWithDefault()
    {
       executeOperation(
-         "",
+         "Null-safe String Representation with Objects.toString(Object,String) Using Empty String Default",
          () -> "The value of the 'null' object is '" + Objects.toString(NULL_OBJECT, "") + "'.");
    }
 
