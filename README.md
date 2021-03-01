@@ -5,6 +5,7 @@ Here are the blog posts associated with these demonstrative examples:
 
 * [Java NullPointerException Avoidance and Enhancement Tactics](http://marxsoftware.blogspot.com/2021/02/java-nullpointerexception-avoidance-and.html) - 27 February 2021
 * [JDK 17: Hexadecimal Formatting and Parsing](http://marxsoftware.blogspot.com/2020/12/jdk17-hex-formatting-parsing.html) - 19 January 2021
+* [JDK 16: Stream to List In One Easy Call](http://marxsoftware.blogspot.com/2020/12/jdk16-stream-to-list.html) - 7 December 2020
 * [JDK 16: Checking Indexes and Ranges of Longs](http://marxsoftware.blogspot.com/2020/11/jdk16-check-long-indexes-ranges.html) - 28 November 2020
 * [Day Period Support in JDK 16](http://marxsoftware.blogspot.com/2020/11/day-period-support-in-jdk-16.html) - 23 November 2020
 * [JDK16 javac xlint Warning about Default Constructors](http://marxsoftware.blogspot.com/2020/08/jdk16-javac-xlint-warning-default-constructors.html) - 21 August 2020
