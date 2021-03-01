@@ -104,20 +104,31 @@ public class NullSafeTactics
 
    /**
     * Demonstrates that {@link Objects#requireNonNullElse(Object, Object)} will render
-    * {@code null} {@code String} safely as "null" string.
+    * {@code null} safely for any potential {@code null} passed to it by returning the
+    * supplied default instead when the object in question is {@code null}. Two
+    * examples are included in this method's demonstration:
+    * <ol>
+    *    <li>{@code null} {@link Object} safely rendered as custom supplied default "null" string</li>
+    *    <li>{@code null} {@link TimeUnit} safely rendered as custom supplied default {@link TimeUnit#SECONDS}</li>
+    * </ol>
     *
     * In many cases, use of {@link Objects#requireNonNullElse(Object, Object)} is not
     * necessary because Java's string conversion will perform the same effect.
     * {@link Objects#requireNonNullElse(Object, Object)} is necessary when Java is not
     * able to implicitly convert to a {@link String} or when the potentially {@code null}
-    * object is not a {@link String}.
+    * object is not a {@link String} or when the object to have a default returned
+    * when it is {@code null} is of class other than {@link String}.
     */
    public void demonstrateNullSafeObjectsRequireNonNullElse()
    {
       executeOperation(
          "Null-safe String Representation with Objects.requireNonNullElse(Object, Object)",
          () -> "The value of the 'null' object is '"
-            + Objects.requireNonNullElse(NULL_OBJECT, "null"));
+            + Objects.requireNonNullElse(NULL_OBJECT, "null") + "'");
+
+      executeOperation("Null-safe TimeUnit access with Objects.requireNonNullElse(Object, Object)",
+         () -> "The value used instead of 'null' TimeUnit is '"
+            + Objects.requireNonNullElse(NULL_TIME_UNIT, TimeUnit.SECONDS) + "'");
    }
 
    /**
@@ -127,7 +138,7 @@ public class NullSafeTactics
     * enum using {@link Enum#equals(Object)} results in a
     * {@link NullPointerException}.
     *
-    * See also http://marxsoftware.blogspot.com/2011/07/use-to-compare-java-enums.html.
+    * See also https://marxsoftware.blogspot.com/2011/07/use-to-compare-java-enums.html.
     */
    public void demonstrateEnumComparisons()
    {
@@ -140,10 +151,11 @@ public class NullSafeTactics
    }
 
    /**
-    * Demonstrates that comparisons against literal values can be {@code null}-safe
-    * as long as the known non-{@code null} literal is on the left side of the
-    * {@link Object#equals(Object)} method ({@link Object#equals(Object)}) is called
-    * on the known literal rather than on the unknown potential {@code null}).
+    * Demonstrates that comparisons against known non-{@code null} strings can be
+    * {@code null}-safe as long as the known non-{@code null} string is on the left
+    * side of the {@link Object#equals(Object)} method ({@link Object#equals(Object)})
+    * is called on the known non-{@code null} string rather than on the unknown
+    * and potential {@code null}.
     */
    public void demonstrateLiteralComparisons()
    {
@@ -155,6 +167,13 @@ public class NullSafeTactics
          () -> NULL_STRING.equals("Inspired by Actual Events"));
    }
 
+   /**
+    * Demonstrates that case-insensitive comparisons against known non-{@code null}
+    * strings can be {@code null}-safe as long as the known non-{@code null} string
+    * is on the left side of the {@link Object#equals(Object)} method
+    * ({@link Object#equals(Object)}) is called on the known non-{@code null} String
+    * rather than on the unknown potential {@code null}).
+    */
    public void demonstrateLiteralStringEqualsIgnoreCase()
    {
       executeOperation(
@@ -197,6 +216,29 @@ public class NullSafeTactics
    }
 
    /**
+    * Demonstrates using {@link Objects#requireNonNull(Object)} and
+    * {@link Objects#requireNonNull(Object, String)} to take control of
+    * when an {@link NullPointerException} is thrown. The method accepting
+    * a {@link String} also allows control of the context that is provided
+    * in the exception message.
+    *
+    * It is not demonstrated here, but a similar method is
+    * {@link Objects#requireNonNull(Object, Supplier)} that allows a
+    * {@link Supplier} to be used to provide the message for when an
+    * unexpected {@code null} is encountered.
+    */
+   public void demonstrateObjectsRequiresNonNullMethods()
+   {
+      executeOperation(
+         "Using Objects.requireNonNull(T)",
+         () -> Objects.requireNonNull(NULL_OBJECT));
+
+      executeOperation(
+         "Using Objects.requireNonNull(T, String)",
+         () -> Objects.requireNonNull(NULL_OBJECT, "Cannot perform logic on supplied null object."));
+   }
+
+   /**
     * Executes supplied {@link Supplier} and catches any {@link Exception}
     * encountered when that {@link Supplier} is invoked.
     *
@@ -229,6 +271,8 @@ public class NullSafeTactics
    public static void main(final String[] arguments)
    {
       final NullSafeTactics demo = new NullSafeTactics();
+
+      // Demonstrate avoidance of unnecessary NullPointerExceptions
       demo.demonstrateNullSafeStringConversion();
       demo.demonstrateNullUnsafeExplicitToString();
       demo.demonstrateNullSafeStringValueOf();
@@ -241,5 +285,8 @@ public class NullSafeTactics
       demo.demonstrateObjectsEquals();
       demo.demonstrateObjectsHashCode();
       demo.demonstrateObjectsHash();
+
+      // Demonstrate useful handling of necessary NullPointerExceptions
+      demo.demonstrateObjectsRequiresNonNullMethods();
    }
 }
