@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 
 /**
  * Demonstrate {@code null}-safe tactics.
+ *
+ * Featured in "Inspired by Actual Events" blog post
+ * "Java NullPointerException Avoidance and Enhancement Tactics"
+ * (https://marxsoftware.blogspot.com/2021/02/java-nullpointerexception-avoidance-and.html)
  */
 public class NullSafeTactics
 {
