@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+option java_outer_classname = "AlbumProtos";
+option java_package = "dustin.examples.protobuf";
+
+message Album {
+    string title = 1;
+    repeated string artist = 2;
+    int32 release_year = 3;
+    repeated string song_title = 4;
+}
