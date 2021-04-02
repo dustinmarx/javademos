@@ -33,12 +33,12 @@ public class HexadecimalDemonstration
       for (char characterValue = 'a'; characterValue < 'i'; characterValue++)
       {
          out.println("Is character '" + characterValue + "' a hexadecimal value? "
-            + HEX_FORMAT_UPPER_CASE.isHexDigit(characterValue));
+            + HexFormat.isHexDigit(characterValue));
       }
       for (char characterValue = 'A'; characterValue < 'I'; characterValue++)
       {
          out.println("Is character '" + characterValue + "' a hexadecimal value? "
-            + HEX_FORMAT_UPPER_CASE.isHexDigit(characterValue));
+            + HexFormat.isHexDigit(characterValue));
       }
    }
 
