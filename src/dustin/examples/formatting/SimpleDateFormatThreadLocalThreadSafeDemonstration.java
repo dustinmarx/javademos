@@ -19,7 +19,7 @@ public class SimpleDateFormatThreadLocalThreadSafeDemonstration
 {
     /** Date/Time Format. */
     private static final ThreadLocal<SimpleDateFormat> SIMPLE_DATE_FORMAT
-        = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.ENGLISH));
+        = ThreadLocal.withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss", Locale.getDefault()));
 
     /** DateTime string to be parsed. */
     private static final String DATE_TIME_STRING = "2021-07-12T13:25:45";
