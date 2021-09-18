@@ -16,7 +16,9 @@ import static java.lang.System.out;
 public class UnnecessaryOptionalDemonstrations
 {
     /**
-     * Method simulating more complicated method that can return {@code null}.
+     * Method simulating more complicated method that can return {@code null}
+     * and which we do not control the code for or otherwise cannot change
+     * the return type to {@link Optional}.
      *
      * @return Always return {@code null} for this contrived example.
      */
