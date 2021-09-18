@@ -72,7 +72,8 @@ public class UnnecessaryOptionalDemonstrations
         }
         else
         {
-            out.println("The returned object is NOT empty: " + returnObject);
+            out.println("The returned object is NOT null: " + returnObject);
+            // code processing non-null return object goes here ...
         }
     }
 
