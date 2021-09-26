@@ -20,7 +20,10 @@ public class SnippetExample
 {
     /**
      * No-arguments constructor not intended for public use.
-     * Use {@link #newInstance()} instead to get an instance of me.
+     * Use {@link #newInstance()} instead to get an instance of me:
+     * {@snippet :
+     *    final SnippetExample instance = SnippetExample.newInstance();   // @highlight substring="newInstance"
+     * }
      */
     private SnippetExample()
     {
