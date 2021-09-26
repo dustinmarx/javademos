@@ -1,9 +1,9 @@
 # javademos
-This repository contains Java-related demonstrations typically discussed in greater detail on the "Inspired by Actual Events" blog (http://marxsoftware.blogspot.com/). These are miscellaneous demonstrations of using Java in different contexts. These demonstrations are not intended to be used as-is with their intended purpose being demonstration rather than direct utility. Therefore, these examples are not necessarily designed or tested for production use.
+This repository contains Java-related demonstrations typically discussed in greater detail on the "Inspired by Actual Events" blog (https://marxsoftware.blogspot.com/). These are miscellaneous demonstrations of using Java in different contexts. These demonstrations are not intended to be used as-is with their intended purpose being demonstration rather than direct utility. Therefore, these examples are not necessarily designed or tested for production use.
 
 Here are the blog posts associated with these demonstrative examples:
 
-* [Java's Optional Does Not Supplant All Traditional if-null-else or if-not-null-else Checks](https://marxsoftware.blogspot.com/)
+* [Java's Optional Does Not Supplant All Traditional if-null-else or if-not-null-else Checks](https://marxsoftware.blogspot.com/) - 17 September 2021
 * [Java NullPointerException Avoidance and Enhancement Tactics](https://marxsoftware.blogspot.com/2021/02/java-nullpointerexception-avoidance-and.html) - 27 February 2021
 * [JDK 17: Hexadecimal Formatting and Parsing](https://marxsoftware.blogspot.com/2020/12/jdk17-hex-formatting-parsing.html) - 19 January 2021
 * [JDK 16: Stream to List In One Easy Call](https://marxsoftware.blogspot.com/2020/12/jdk16-stream-to-list.html) - 7 December 2020
